@@ -1,0 +1,5 @@
+// we can use no named functtion also 
+ex: without importing the test for that at the  we need to add (); 
+and we need the run the command using node command ex: node getbyplacedholder.spec.ts
+
+for scope level we can use context if not just skip importing
