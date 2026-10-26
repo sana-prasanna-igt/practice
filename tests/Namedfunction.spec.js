@@ -1,8 +1,5 @@
-const { chromium, test, expect } = require('playwright/test');
-test('Page Title Test', async (page) => {
-  /*const browser = await chromium.launch({headless:false});
-  const context = await browser.newContext();
-  const page = await context.newPage();*/
+const { test, expect } = require('@playwright/test');
+test('Page Title Test', async ({ page }) => {
 
   //to load the application url
   await page.goto('https://playwright.dev/');
