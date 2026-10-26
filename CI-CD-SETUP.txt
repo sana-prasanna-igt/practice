@@ -1,0 +1,13 @@
+CI/CD setup
+
+GitHub Actions workflow: .github/workflows/playwright.yml
+
+The workflow runs the Playwright test suite on pushes and pull requests.
+It installs Node.js dependencies and Chromium, then uploads the Playwright
+HTML report as a workflow artifact.
+
+After a successful push to the main branch, the HTML report is published
+to GitHub Pages:
+https://sana-prasanna-igt.github.io/practice/
+
+Pull requests run the tests but do not publish a report.
