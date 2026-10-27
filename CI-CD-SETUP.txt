@@ -11,3 +11,25 @@ to GitHub Pages:
 https://sana-prasanna-igt.github.io/practice/
 
 Pull requests run the tests but do not publish a report.
+
+Jenkins
+
+The Jenkinsfile checks out this repository, installs dependencies and Chromium,
+runs the same `npm test` suite, and archives the Playwright HTML report and test
+results. It polls the configured branch every five minutes, so it works with a
+local Jenkins server that GitHub cannot reach with a webhook.
+
+To configure Jenkins:
+1. Create a Pipeline job and select "Pipeline script from SCM".
+2. Select Git, set the repository URL to
+   https://github.com/sana-prasanna-igt/practice.git, and set the branch to
+   `*/feature/add-ci-cd-notes`.
+3. Set the script path to `Jenkinsfile` and save.
+4. Ensure the Jenkins agent has Node.js 20 and npm on its PATH. On Linux, the
+   agent must also be able to install Playwright's Chromium system dependencies.
+5. Run the first build with "Build Now". Later changes to the configured branch
+   are picked up by polling. Find the archived `playwright-report` and
+   `test-results` artifacts on each build page.
+
+GitHub Actions continues to run on pushes and pull requests. Jenkins polls the
+branch selected in its job configuration and runs the same Playwright tests.
